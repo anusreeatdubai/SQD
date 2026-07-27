@@ -11,6 +11,7 @@ import HowWeWork from './components/HowWeWork'
 import Testimonials from './components/Testimonials'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
+import Chatbot from './components/Chatbot'
 
 /* ═══════════════════════════════════════
    MAIN APP
@@ -31,6 +32,7 @@ function App() {
       <Testimonials />
       <CTA />
       <Footer />
+      <Chatbot />
     </>
   )
 }
