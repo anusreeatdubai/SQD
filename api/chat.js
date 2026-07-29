@@ -1,13 +1,6 @@
 import Groq from 'groq-sdk'
 
 /* ═══════════════════════════════════════
-   GROQ CLIENT SETUP
-   ═══════════════════════════════════════ */
-const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY,
-})
-
-/* ═══════════════════════════════════════
    SYSTEM PROMPT — SQD ARCHITECT CONTEXT
    ═══════════════════════════════════════ */
 const SYSTEM_PROMPT = `You are the friendly and professional AI assistant for SQD — a premium interior solutions and custom joinery manufacturing company located in SAIF Zone, Sharjah, UAE with over 60 years of experience.
@@ -69,6 +62,8 @@ export default async function handler(req, res) {
       console.error('GROQ_API_KEY environment variable is missing')
       return res.status(500).json({ error: 'GROQ_API_KEY is not configured on server' })
     }
+
+    const groq = new Groq({ apiKey })
 
     const chatCompletion = await groq.chat.completions.create({
       messages: [
