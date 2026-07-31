@@ -11,13 +11,13 @@ function CTA() {
     const form = e.target
     const data = new FormData(form)
 
-    const name     = (data.get('name') || '').toString().trim()
-    const email    = (data.get('email') || '').toString().trim()
-    const phone    = (data.get('phone') || '').toString().trim()
-    const service  = (data.get('service') || '').toString().trim()
+    const name = (data.get('name') || '').toString().trim()
+    const email = (data.get('email') || '').toString().trim()
+    const phone = (data.get('phone') || '').toString().trim()
+    const service = (data.get('service') || '').toString().trim()
     const location = (data.get('location') || '').toString().trim()
-    const budget   = (data.get('budget') || '').toString().trim()
-    const message  = (data.get('message') || '').toString().trim()
+    const budget = (data.get('budget') || '').toString().trim()
+    const message = (data.get('message') || '').toString().trim()
 
     if (!name || !email || !phone) {
       return
@@ -26,6 +26,8 @@ function CTA() {
     setStatus('sending')
 
     const apiKey = (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '').trim()
+
+    console.log("Access Key:", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY);
 
     // 1. Console Log: Access Key Check
     console.log('[Web3Forms Debug] Access Key Check:', {
@@ -109,7 +111,7 @@ function CTA() {
           <p>
             Tell us about your project and we'll get back to you within 24 hours with a personalised consultation.
           </p>
-          
+
         </div>
 
         {/* Right — form */}
