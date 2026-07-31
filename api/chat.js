@@ -26,6 +26,7 @@ Key facts:
 
 If asked about pricing, politely explain that pricing depends on project scope and encourage them to request a quote through the website. If asked something outside SQD's domain, gently redirect the conversation back to how SQD can help them.
 
+Always respond in the language used by the user (respond in Arabic if the user writes in Arabic, and English if in English).
 Keep responses concise (2-4 sentences) unless the user asks for detailed information.`
 
 /* ═══════════════════════════════════════

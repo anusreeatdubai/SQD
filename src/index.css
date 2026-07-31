@@ -2716,3 +2716,146 @@ p {
     left: 26px;
   }
 }
+
+/* ═══════════════════════════════════════
+   RTL SUPPORT (Arabic)
+   ═══════════════════════════════════════ */
+
+/* Font switching for Arabic */
+[dir="rtl"] body,
+[dir="rtl"] button,
+[dir="rtl"] input,
+[dir="rtl"] select,
+[dir="rtl"] textarea {
+  font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6,
+[dir="rtl"] .section-title,
+[dir="rtl"] .history-title {
+  font-family: 'Tajawal', Georgia, 'Times New Roman', serif;
+}
+
+/* Reverse reveal-left/reveal-right for RTL */
+[dir="rtl"] .reveal-left {
+  transform: translateX(40px);
+}
+
+[dir="rtl"] .reveal-right {
+  transform: translateX(-40px);
+}
+
+[dir="rtl"] .reveal-left.visible,
+[dir="rtl"] .reveal-right.visible {
+  transform: translateX(0);
+}
+
+/* Navbar link underline from right in RTL */
+[dir="rtl"] .navbar-links a::after {
+  left: auto;
+  right: 0;
+}
+
+/* Arrow icons flip for RTL */
+[dir="rtl"] .cta-submit-btn svg,
+[dir="rtl"] .project-cta svg,
+[dir="rtl"] .hero-buttons .btn-primary svg {
+  transform: scaleX(-1);
+}
+
+/* Footer map arrow already handled by text */
+
+/* Phone numbers & emails formatting fix for RTL */
+[dir="rtl"] a[href^="tel:"],
+[dir="rtl"] a[href^="mailto:"] {
+  direction: ltr;
+  unicode-bidi: isolate;
+  display: inline-block;
+}
+
+/* Phone input placeholder & value formatting in RTL */
+[dir="rtl"] input[type="tel"],
+[dir="rtl"] input[name="phone"] {
+  direction: ltr;
+  text-align: right;
+}
+
+/* CTA select dropdown arrow position in RTL */
+[dir="rtl"] .cta-field select {
+  background-position: left 14px center;
+  padding-right: 16px;
+  padding-left: 38px;
+}
+
+/* Timeline line position in RTL for mobile */
+@media (max-width: 768px) {
+  [dir="rtl"] .timeline::before {
+    left: auto;
+    right: 26px;
+  }
+}
+
+/* ═══════════════════════════════════════
+   LANGUAGE SWITCHER
+   ═══════════════════════════════════════ */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.05em;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--color-secondary);
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+  border-radius: var(--radius-sm);
+}
+
+.navbar.scrolled .lang-switcher {
+  border-color: rgba(17, 17, 17, 0.2);
+  color: var(--color-primary);
+}
+
+.lang-switcher:hover {
+  background: var(--color-blue);
+  border-color: var(--color-blue);
+  color: var(--color-secondary);
+}
+
+[dir="rtl"] .lang-switcher {
+  font-family: 'Tajawal', sans-serif;
+}
+
+/* Mobile: show lang switcher in mobile menu */
+@media (max-width: 1024px) {
+  .lang-switcher-desktop {
+    display: none;
+  }
+
+  .lang-switcher-mobile {
+    display: flex;
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--color-secondary);
+    margin-top: var(--spacing-sm);
+  }
+}
+
+@media (min-width: 1025px) {
+  .lang-switcher-desktop {
+    display: flex;
+  }
+
+  .lang-switcher-mobile {
+    display: none;
+  }
+}

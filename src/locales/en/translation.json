@@ -1,0 +1,279 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "history": "History",
+    "services": "Services",
+    "projects": "Projects",
+    "factory": "Factory",
+    "contact": "Contact",
+    "requestQuote": "Request Quote"
+  },
+  "hero": {
+    "title": "Crafting Bespoke Interiors for Modern Living",
+    "tagline": "Luxury Kitchens  •  Custom Joinery  •  Wardrobes  •  Interior Fit-Out",
+    "exploreProjects": "Explore Projects",
+    "requestConsultation": "Request Consultation"
+  },
+  "about": {
+    "label": "Our Legacy",
+    "heading1": "Designed for Living.",
+    "heading2": "Built for Generations.",
+    "paragraph1": "With over 60 years of experience, SQD has earned a reputation for delivering premium interior solutions, custom joinery, and precision manufacturing. From luxury kitchens, wardrobes, and walk-in closets to bespoke commercial and residential interiors, we combine skilled craftsmanship with advanced machinery to create products that meet the highest standards of quality, durability, and design.",
+    "paragraph2": "Beyond complete interior solutions, SQD is a trusted manufacturing partner for interior design firms, contractors, architects, developers, and material suppliers. Our state-of-the-art production facility enables us to provide custom joinery, CNC machining, wood and panel fabrication, and contract manufacturing services. Every project is delivered with precision, reliability, and a commitment to excellence, ensuring exceptional results from concept to completion."
+  },
+  "history": {
+    "label": "Our Story",
+    "title": "More Than 60 Years in the Making",
+    "subtitle": "Every enduring company has a story. Ours began more than six decades ago, built on the craftsmanship, experience, and dedication of three generations of one family.",
+    "timeline": [
+      {
+        "era": "The Beginning",
+        "period": "1960s",
+        "heading": "Roots on Qeshm Island",
+        "body": "Three generations ago, the founding family began building large wooden cargo dhows on Qeshm Island in southern Iran. These traditional vessels were vital to regional maritime trade. Constructing them demanded engineering knowledge, precision craftsmanship, and an uncompromising commitment to quality."
+      },
+      {
+        "era": "Expansion",
+        "period": "1970s – 1980s",
+        "heading": "Doors, Windows & Woodworking",
+        "body": "Alongside dhow building, the family specialised in manufacturing wooden doors and windows. As the industry evolved, the next generation expanded the business while preserving the same values of quality, reliability, and craftsmanship that had defined the family for decades."
+      },
+      {
+        "era": "Transformation",
+        "period": "1990s – 2000s",
+        "heading": "From Workshop to Modern Manufacturer",
+        "body": "What began as a traditional woodworking workshop gradually evolved into a modern manufacturing business, specialising in custom joinery, kitchens, wardrobes, interior fit-out solutions, UPVC and aluminium doors and windows, and a wide range of architectural wood products."
+      },
+      {
+        "era": "UAE Chapter",
+        "period": "2010s – Present",
+        "heading": "SQD Established in Dubai",
+        "body": "Today this legacy continues in the United Arab Emirates under the SQD brand. Headquartered in Dubai with our manufacturing facility in Sharjah Airport International Free Zone (SAIF Zone), we are equipped to deliver large-scale joinery solutions across the UAE and the wider region."
+      },
+      {
+        "era": "The Future",
+        "period": "Now & Beyond",
+        "heading": "SQD App: The Next Generation",
+        "body": "We believe the future of the joinery industry will be driven by technology, automation, and artificial intelligence. That is why we are developing SQD App, an intelligent platform designed to unify sales, design, estimating, manufacturing, project management, and AI into one integrated ecosystem."
+      }
+    ],
+    "stats": [
+      { "value": "60+", "label": "Years of Experience" },
+      { "value": "3", "label": "Generations of Craftsmanship" },
+      { "value": "DUBAI", "label": "Headquartered in Dubai" },
+      { "value": "SAIF ZONE", "label": "Manufacturing in Sharjah" }
+    ],
+    "quote": "More than 60 years of experience. Three generations of craftsmanship. The capability to deliver large-scale projects. A clear vision for the future.",
+    "quoteCite": "That is SQD."
+  },
+  "services": {
+    "label": "What We Do",
+    "title": "Our Services",
+    "subtitle": "We provide complete interior solutions along with precision joinery manufacturing, CNC machining, and custom fabrication services. Whether you're a homeowner, contractor, interior design firm, or material supplier, we deliver high-quality craftsmanship and reliable production support from concept to completion.",
+    "items": [
+      "Residential Interiors",
+      "Commercial Interiors",
+      "Luxury Kitchens",
+      "Custom Wardrobes & Closets",
+      "Custom Joinery Manufacturing",
+      "CNC Cutting & Machining",
+      "Wood & Panel Fabrication",
+      "B2B Manufacturing Partnership"
+    ]
+  },
+  "projects": {
+    "label": "Portfolio",
+    "title": "Featured Projects",
+    "subtitle": "A curated selection of our finest work, each project a unique expression of luxury and craftsmanship.",
+    "viewProject": "View Project",
+    "prev": "Prev",
+    "next": "Next",
+    "locationLabel": "Location",
+    "yearLabel": "Year",
+    "servicesLabel": "Services",
+    "galleryTitle": "Project Gallery",
+    "galleryPhotos": "photos",
+    "data": [
+      {
+        "title": "Qeshm Twin Towers",
+        "description": "Premium commercial interior fit-out featuring bespoke joinery, modern finishes, and precision craftsmanship throughout the development.",
+        "location": "Qeshm, Iran",
+        "services": [
+          "Bespoke Kitchen Cabinetry",
+          "Custom Wardrobes & Closets",
+          "TV Feature Wall Joinery",
+          "Custom Display & Storage Units",
+          "Under-Stair Storage Solutions"
+        ]
+      },
+      {
+        "title": "Daryoush Qeshm",
+        "description": "A premium commercial development featuring custom interior fit-out, bespoke joinery, and high-quality architectural finishes.",
+        "location": "Qeshm, Iran",
+        "services": [
+          "Luxury Interior Fit-Out",
+          "Architectural Woodwork",
+          "Bespoke Door & Portal Frames",
+          "Decorative Wall Panelling",
+          "Custom Display Cabinetry"
+        ]
+      },
+      {
+        "title": "Top Island Qeshm",
+        "description": "A premium mixed-use development featuring custom interior fit-out, bespoke joinery, and high-quality architectural finishes.",
+        "location": "Qeshm, Iran",
+        "services": [
+          "Turnkey Commercial Fit-Out",
+          "Executive Lounge Joinery",
+          "Custom Millwork & Countertops",
+          "Integrated Lighting Solutions",
+          "Decorative Ceiling Baffles"
+        ]
+      }
+    ]
+  },
+  "whySqd": {
+    "label": "The SQD Difference",
+    "title": "Why Choose SQD",
+    "items": [
+      "Premium craftsmanship",
+      "Tailor-made solutions",
+      "Attention to detail",
+      "Advanced manufacturing",
+      "Premium materials",
+      "Professional installation",
+      "Luxury finishes"
+    ]
+  },
+  "factory": {
+    "label": "Our Facility",
+    "title": "The Factory",
+    "subtitle": "State-of-the-art European machinery combined with traditional craftsmanship. Precision at every stage.",
+    "items": [
+      "CNC Nesting Machine",
+      "Panel Saw",
+      "Workshop",
+      "Edge Banding Machine",
+      "Precision Cutting",
+      "Cabinet Assembly"
+    ]
+  },
+  "howWeWork": {
+    "label": "Our Process",
+    "title": "How We Work",
+    "subtitle": "A refined process ensuring exceptional results, from initial consultation to final installation.",
+    "steps": [
+      "Consultation",
+      "Concept Design",
+      "Material Selection",
+      "Precision Manufacturing",
+      "Quality Inspection",
+      "Professional Installation"
+    ]
+  },
+  "testimonials": {
+    "label": "Client Stories",
+    "title": "What They Say",
+    "items": [
+      {
+        "text": "\"SQD transformed our vision into reality. The attention to detail in our kitchen is beyond anything we imagined. Every cabinet, every finish, absolute perfection.\"",
+        "author": "Sarah M.",
+        "role": "Homeowner, Dubai"
+      },
+      {
+        "text": "\"Working with SQD was a seamless experience from start to finish. Their craftsmanship is unmatched, and their team truly understands luxury. Our walk-in closet is a masterpiece.\"",
+        "author": "Ahmed K.",
+        "role": "Interior Designer"
+      },
+      {
+        "text": "\"The quality of materials and precision in manufacturing is extraordinary. SQD delivered our entire villa interior on time and exceeded every expectation.\"",
+        "author": "Victoria L.",
+        "role": "Architect"
+      }
+    ]
+  },
+  "cta": {
+    "label": "Get Started",
+    "heading1": "Let's Create Something",
+    "heading2": "Extraordinary",
+    "description": "Tell us about your project and we'll get back to you within 24 hours with a personalised consultation.",
+    "form": {
+      "fullName": "Full Name *",
+      "fullNamePlaceholder": "Your full name",
+      "email": "Email Address *",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone / WhatsApp *",
+      "phonePlaceholder": "+971 00 000 0000",
+      "service": "Service Required",
+      "servicePlaceholder": "Select a service",
+      "location": "Project Location",
+      "locationPlaceholder": "City, Country",
+      "budget": "Approximate Budget",
+      "budgetPlaceholder": "Select range",
+      "message": "Project Details",
+      "messagePlaceholder": "Tell us about your vision, timeline, and any specific requirements…"
+    },
+    "serviceOptions": [
+      "Luxury Kitchen",
+      "Custom Wardrobe",
+      "Walk-in Closet",
+      "Office Interior",
+      "Living Room Design",
+      "Commercial Fit-Out",
+      "Custom Joinery",
+      "Other"
+    ],
+    "budgetOptions": [
+      "Under AED 50,000",
+      "AED 50,000 – 100,000",
+      "AED 100,000 – 250,000",
+      "AED 250,000 – 500,000",
+      "Above AED 500,000"
+    ],
+    "button": {
+      "send": "Send Quote Request",
+      "sending": "Sending Request...",
+      "sent": "Request Sent",
+      "error": "Failed to Send. Try Again"
+    },
+    "formNote": "We'll respond within 24 hours · All enquiries are confidential"
+  },
+  "footer": {
+    "description": "Crafting premium bespoke interiors since 1960. Luxury kitchens, custom joinery, and interior solutions designed for modern living.",
+    "company": "Company",
+    "companyLinks": {
+      "about": "About",
+      "projects": "Projects",
+      "services": "Services",
+      "factory": "Factory",
+      "contact": "Contact"
+    },
+    "servicesTitle": "Services",
+    "serviceLinks": {
+      "kitchens": "Luxury Kitchens",
+      "wardrobes": "Custom Wardrobes",
+      "closets": "Walk-in Closets",
+      "office": "Office Interiors",
+      "joinery": "Custom Joinery"
+    },
+    "contactTitle": "Contact",
+    "locationTitle": "Location",
+    "locationText": "SAIF Zone, Sharjah, UAE",
+    "openMaps": "Open Google Maps →",
+    "copyright": "© {{year}} SQD. All rights reserved.",
+    "tagline": "Designed with precision."
+  },
+  "chatbot": {
+    "title": "SQD Architect",
+    "subtitle": "Powered by AI • Online",
+    "welcome": "Hello! 👋 Welcome to SQD. I'm here to help you with any questions about our interior design services, custom joinery, or manufacturing capabilities. How can I assist you today?",
+    "placeholder": "Ask about our services...",
+    "error": "Sorry, I'm having trouble connecting right now. Please try again in a moment, or contact us directly through the form below.",
+    "footer": "SQD Architect • AI Assistant"
+  },
+  "langSwitcher": {
+    "en": "English",
+    "ar": "العربية"
+  }
+}

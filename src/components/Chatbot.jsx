@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import './Chatbot.css'
 
 /* ═══════════════════════════════════════
@@ -6,18 +7,25 @@ import './Chatbot.css'
    Groq-powered AI assistant for SQD
    ═══════════════════════════════════════ */
 
-const WELCOME_MESSAGE = {
-  role: 'assistant',
-  content: 'Hello! 👋 Welcome to SQD. I\'m here to help you with any questions about our interior design services, custom joinery, or manufacturing capabilities. How can I assist you today?',
-}
-
 function Chatbot() {
+  const { t, i18n } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
-  const [messages, setMessages] = useState([WELCOME_MESSAGE])
+  const [messages, setMessages] = useState([
+    { role: 'assistant', content: t('chatbot.welcome'), isWelcome: true }
+  ])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef(null)
   const inputRef = useRef(null)
+
+  /* Update initial welcome message when language changes */
+  useEffect(() => {
+    setMessages((prev) =>
+      prev.map((msg) =>
+        msg.isWelcome ? { ...msg, content: t('chatbot.welcome') } : msg
+      )
+    )
+  }, [i18n.language, t])
 
   /* Auto-scroll to latest message */
   useEffect(() => {
@@ -71,7 +79,7 @@ function Chatbot() {
         ...prev,
         {
           role: 'assistant',
-          content: 'Sorry, I\'m having trouble connecting right now. Please try again in a moment, or contact us directly through the form below.',
+          content: t('chatbot.error'),
         },
       ])
     } finally {
@@ -100,8 +108,8 @@ function Chatbot() {
               </svg>
             </div>
             <div className="chatbot-header-text">
-              <h4>SQD Architect</h4>
-              <span>Powered by AI • Online</span>
+              <h4>{t('chatbot.title')}</h4>
+              <span>{t('chatbot.subtitle')}</span>
             </div>
           </div>
           <button className="chatbot-close" onClick={toggleChat} aria-label="Close chat">
@@ -134,7 +142,7 @@ function Chatbot() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Ask about our services..."
+            placeholder={t('chatbot.placeholder')}
             disabled={isLoading}
             id="chatbot-input"
           />
@@ -151,7 +159,7 @@ function Chatbot() {
           </button>
         </div>
 
-        <div className="chatbot-footer">SQD Architect • AI Assistant</div>
+        <div className="chatbot-footer">{t('chatbot.footer')}</div>
       </div>
 
       {/* ── Floating Toggle Button ── */}

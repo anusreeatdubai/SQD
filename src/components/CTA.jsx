@@ -2,8 +2,10 @@
    CTA COMPONENT — Quote Form
    ═══════════════════════════════════════ */
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 function CTA() {
+  const { t } = useTranslation()
   const [status, setStatus] = useState('idle') // idle | sending | sent | error
 
   const handleSubmit = async (e) => {
@@ -43,9 +45,6 @@ const WEB3FORMS_ACCESS_KEY = 'c6dc97b3-94eb-468c-b3d9-be98a4721b22'
       from_name: 'SQD Website Quote Form'
     }
 
-    // 2. Console Log: Request Payload
-    console.log('[Web3Forms Debug] Sending Payload to https://api.web3forms.com/submit:', payload)
-
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -57,9 +56,6 @@ const WEB3FORMS_ACCESS_KEY = 'c6dc97b3-94eb-468c-b3d9-be98a4721b22'
       })
 
       const result = await response.json()
-
-      // 3. Console Log: Web3Forms Response
-      console.log('[Web3Forms Debug] API Response:', result)
 
       if (result.success) {
         setStatus('sent')
@@ -75,7 +71,6 @@ const WEB3FORMS_ACCESS_KEY = 'c6dc97b3-94eb-468c-b3d9-be98a4721b22'
         }, 5000)
       }
     } catch (err) {
-      // 4. Console Log: Fetch Error
       console.error('[Web3Forms Error] Network or Fetch Exception:', err)
       setStatus('error')
       setTimeout(() => {
@@ -83,6 +78,9 @@ const WEB3FORMS_ACCESS_KEY = 'c6dc97b3-94eb-468c-b3d9-be98a4721b22'
       }, 5000)
     }
   }
+
+  const serviceOptions = t('cta.serviceOptions', { returnObjects: true })
+  const budgetOptions = t('cta.budgetOptions', { returnObjects: true })
 
   return (
     <section className="cta-section" id="cta">
@@ -94,11 +92,11 @@ const WEB3FORMS_ACCESS_KEY = 'c6dc97b3-94eb-468c-b3d9-be98a4721b22'
       <div className="cta-form-wrap reveal">
         {/* Left — headline */}
         <div className="cta-headline">
-          <span className="section-label" style={{ color: 'var(--color-accent)' }}>Get Started</span>
-          <h2>Let's Create Something<br />Extraordinary</h2>
+          <span className="section-label" style={{ color: 'var(--color-accent)' }}>{t('cta.label')}</span>
+          <h2>{t('cta.heading1')}<br />{t('cta.heading2')}</h2>
           <div className="section-divider" style={{ margin: '1.5rem 0' }} />
           <p>
-            Tell us about your project and we'll get back to you within 24 hours with a personalised consultation.
+            {t('cta.description')}
           </p>
 
         </div>
@@ -107,74 +105,67 @@ const WEB3FORMS_ACCESS_KEY = 'c6dc97b3-94eb-468c-b3d9-be98a4721b22'
         <form className="cta-quote-form" onSubmit={handleSubmit}>
           <div className="cta-form-row">
             <div className="cta-field">
-              <label htmlFor="cta-name">Full Name *</label>
-              <input id="cta-name" name="name" type="text" placeholder="Your full name" required />
+              <label htmlFor="cta-name">{t('cta.form.fullName')}</label>
+              <input id="cta-name" name="name" type="text" placeholder={t('cta.form.fullNamePlaceholder')} required />
             </div>
             <div className="cta-field">
-              <label htmlFor="cta-email">Email Address *</label>
-              <input id="cta-email" name="email" type="email" placeholder="your@email.com" required />
+              <label htmlFor="cta-email">{t('cta.form.email')}</label>
+              <input id="cta-email" name="email" type="email" placeholder={t('cta.form.emailPlaceholder')} required />
             </div>
           </div>
 
           <div className="cta-form-row">
             <div className="cta-field">
-              <label htmlFor="cta-phone">Phone / WhatsApp *</label>
-              <input id="cta-phone" name="phone" type="tel" placeholder="+971 00 000 0000" required />
+              <label htmlFor="cta-phone">{t('cta.form.phone')}</label>
+              <input id="cta-phone" name="phone" type="tel" placeholder={t('cta.form.phonePlaceholder')} required dir="ltr" />
             </div>
             <div className="cta-field">
-              <label htmlFor="cta-service">Service Required</label>
+              <label htmlFor="cta-service">{t('cta.form.service')}</label>
               <select id="cta-service" name="service" defaultValue="">
-                <option value="" disabled>Select a service</option>
-                <option>Luxury Kitchen</option>
-                <option>Custom Wardrobe</option>
-                <option>Walk-in Closet</option>
-                <option>Office Interior</option>
-                <option>Living Room Design</option>
-                <option>Commercial Fit-Out</option>
-                <option>Custom Joinery</option>
-                <option>Other</option>
+                <option value="" disabled>{t('cta.form.servicePlaceholder')}</option>
+                {serviceOptions.map((opt, i) => (
+                  <option key={i}>{opt}</option>
+                ))}
               </select>
             </div>
           </div>
 
           <div className="cta-form-row">
             <div className="cta-field">
-              <label htmlFor="cta-location">Project Location</label>
-              <input id="cta-location" name="location" type="text" placeholder="City, Country" />
+              <label htmlFor="cta-location">{t('cta.form.location')}</label>
+              <input id="cta-location" name="location" type="text" placeholder={t('cta.form.locationPlaceholder')} />
             </div>
             <div className="cta-field">
-              <label htmlFor="cta-budget">Approximate Budget</label>
+              <label htmlFor="cta-budget">{t('cta.form.budget')}</label>
               <select id="cta-budget" name="budget" defaultValue="">
-                <option value="" disabled>Select range</option>
-                <option>Under AED 50,000</option>
-                <option>AED 50,000 – 100,000</option>
-                <option>AED 100,000 – 250,000</option>
-                <option>AED 250,000 – 500,000</option>
-                <option>Above AED 500,000</option>
+                <option value="" disabled>{t('cta.form.budgetPlaceholder')}</option>
+                {budgetOptions.map((opt, i) => (
+                  <option key={i}>{opt}</option>
+                ))}
               </select>
             </div>
           </div>
 
           <div className="cta-field">
-            <label htmlFor="cta-message">Project Details</label>
-            <textarea id="cta-message" name="message" rows="4" placeholder="Tell us about your vision, timeline, and any specific requirements…" />
+            <label htmlFor="cta-message">{t('cta.form.message')}</label>
+            <textarea id="cta-message" name="message" rows="4" placeholder={t('cta.form.messagePlaceholder')} />
           </div>
 
           <button type="submit" className="cta-submit-btn" disabled={status === 'sending'}>
             {status === 'sending' ? (
-              <>Sending Request...</>
+              <>{t('cta.button.sending')}</>
             ) : status === 'sent' ? (
               <>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
-                Request Sent
+                {t('cta.button.sent')}
               </>
             ) : status === 'error' ? (
-              <>Failed to Send. Try Again</>
+              <>{t('cta.button.error')}</>
             ) : (
               <>
-                Send Quote Request
+                {t('cta.button.send')}
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
                 </svg>
@@ -183,7 +174,7 @@ const WEB3FORMS_ACCESS_KEY = 'c6dc97b3-94eb-468c-b3d9-be98a4721b22'
           </button>
 
           <p className="cta-form-note">
-            We'll respond within 24 hours · All enquiries are confidential
+            {t('cta.formNote')}
           </p>
         </form>
       </div>

@@ -1,34 +1,21 @@
+import { useTranslation } from 'react-i18next'
+
 /* ═══════════════════════════════════════
    ABOUT COMPONENT
    ═══════════════════════════════════════ */
 function About() {
+  const { t } = useTranslation()
+
   return (
     <section className="about section" id="about">
       <div className="container">
         <div className="about-inner">
           <div className="about-content reveal-left">
-            <span className="about-label">Our Legacy</span>
-            <h2>Designed for Living.<br />Built for Generations.</h2>
+            <span className="about-label">{t('about.label')}</span>
+            <h2>{t('about.heading1')}<br />{t('about.heading2')}</h2>
             <div className="about-line"></div>
-            <p>
-              With over 60 years of experience, SQD has earned a reputation for delivering
-              premium interior solutions, custom joinery, and precision manufacturing. From
-              luxury kitchens, wardrobes, and walk-in closets to bespoke commercial and
-              residential interiors, we combine skilled craftsmanship with advanced
-              machinery to create products that meet the highest standards of quality,
-              durability, and design.
-            </p>
-
-            <p>
-              Beyond complete interior solutions, SQD is a trusted manufacturing partner
-              for interior design firms, contractors, architects, developers, and material
-              suppliers. Our state-of-the-art production facility enables us to provide
-              custom joinery, CNC machining, wood and panel fabrication, and contract
-              manufacturing services. Every project is delivered with precision, reliability,
-              and a commitment to excellence, ensuring exceptional results from concept to
-              completion.
-            </p>
-
+            <p>{t('about.paragraph1')}</p>
+            <p>{t('about.paragraph2')}</p>
           </div>
           <div className="about-image reveal-right">
             <img

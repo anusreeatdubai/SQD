@@ -1,38 +1,38 @@
-import { CogIcon, CraftIcon, BoxIcon } from './Icons'
+import { useTranslation } from 'react-i18next'
 
 /* ═══════════════════════════════════════
    FACTORY COMPONENT
    ═══════════════════════════════════════ */
 const factoryImages = [
-  { title: 'CNC Nesting Machine', image: '/images/factory/cncnesting.png', hasImage: true },
-  { title: 'Panel Saw', image: '/images/factory/panelsaw.png', hasImage: true },
-  { title: 'Workshop', image: '/images/factory/workshoponly.jpeg', hasImage: true },
-  { title: 'Edge Banding Machine', image: '/images/factory/edgebander.png', hasImage: true  },
-  { title: 'Precision Cutting', image: '/images/factory/cut.png', hasImage: true  },
-  { title: 'Cabinet Assembly', image: '/images/factory/cabinet.png', hasImage: true  },
+  '/images/factory/cncnesting.png',
+  '/images/factory/panelsaw.png',
+  '/images/factory/workshoponly.jpeg',
+  '/images/factory/edgebander.png',
+  '/images/factory/cut.png',
+  '/images/factory/cabinet.png',
 ]
 
-
-
 function Factory() {
+  const { t } = useTranslation()
+  const items = t('factory.items', { returnObjects: true })
+
   return (
     <section className="section" id="factory">
       <div className="container">
         <div className="section-header reveal">
-          <span className="section-label">Our Facility</span>
-          <h2 className="section-title">The Factory</h2>
+          <span className="section-label">{t('factory.label')}</span>
+          <h2 className="section-title">{t('factory.title')}</h2>
           <div className="section-divider"></div>
           <p className="section-subtitle">
-            State-of-the-art European machinery combined with traditional craftsmanship. 
-            Precision at every stage.
+            {t('factory.subtitle')}
           </p>
         </div>
         <div className="factory-grid">
-          {factoryImages.map((item, i) => (
+          {items.map((title, i) => (
             <div key={i} className="factory-card reveal" style={{ transitionDelay: `${i * 0.1}s` }}>
-              <img src={item.image} alt={item.title} loading="lazy" />
+              <img src={factoryImages[i]} alt={title} loading="lazy" />
               <div className="factory-card-label">
-                <span>{item.title}</span>
+                <span>{title}</span>
               </div>
             </div>
           ))}

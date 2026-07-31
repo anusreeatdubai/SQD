@@ -4,23 +4,13 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
-/* --- Extended Project Data --- */
-const projectsData = [
+/* --- Static project data (non-translatable fields) --- */
+const projectsStaticData = [
   {
-    title: 'Qeshm Twin Towers',
     image: '/images/projects/QTwinTower.png',
-    description:
-      'Premium commercial interior fit-out featuring bespoke joinery, modern finishes, and precision craftsmanship throughout the development.',
-    location: 'Qeshm, Iran',
     year: '2016',
-    services: [
-      'Bespoke Kitchen Cabinetry',
-      'Custom Wardrobes & Closets',
-      'TV Feature Wall Joinery',
-      'Custom Display & Storage Units',
-      'Under-Stair Storage Solutions'
-    ],
     gallery: [
       '/images/projects/QTwinTower/tt1.png',
       '/images/projects/QTwinTower/tt2.png',
@@ -33,20 +23,9 @@ const projectsData = [
     ],
   },
   {
-    title: 'Daryoush Qeshm',
     image: '/images/projects/Daryoush.png',
     objectPosition: 'center 100%',
-    description:
-      'A premium commercial development featuring custom interior fit-out, bespoke joinery, and high-quality architectural finishes.',
-    location: 'Qeshm, Iran',
     year: '2018',
-    services: [
-      'Luxury Interior Fit-Out',
-      'Architectural Woodwork',
-      'Bespoke Door & Portal Frames',
-      'Decorative Wall Panelling',
-      'Custom Display Cabinetry'
-    ],
     gallery: [
       '/images/projects/Daryoush/d1.png',
       '/images/projects/Daryoush/d2.png',
@@ -59,19 +38,8 @@ const projectsData = [
     ],
   },
   {
-    title: 'Top Island Qeshm',
     image: '/images/projects/TopIsland.png',
-    description:
-      'A premium mixed-use development featuring custom interior fit-out, bespoke joinery, and high-quality architectural finishes.',
-    location: 'Qeshm, Iran',
     year: '2026',
-    services: [
-      'Turnkey Commercial Fit-Out',
-      'Executive Lounge Joinery',
-      'Custom Millwork & Countertops',
-      'Integrated Lighting Solutions',
-      'Decorative Ceiling Baffles'
-    ],
     gallery: [
       '/images/projects/TopIsland/qt1.png',
       '/images/projects/TopIsland/qt2.png',
@@ -219,13 +187,16 @@ const galleryItemVariant = {
 }
 
 function ProjectOverlay({ projectIndex, onClose }) {
+  const { t } = useTranslation()
   const [currentIndex, setCurrentIndex] = useState(projectIndex)
   const [lightboxIndex, setLightboxIndex] = useState(null)
   const [direction, setDirection] = useState(0)
   const scrollContainerRef = useRef(null)
 
-  const project = projectsData[currentIndex]
-  const total = projectsData.length
+  const staticProject = projectsStaticData[currentIndex]
+  const translatedData = t('projects.data', { returnObjects: true })
+  const translated = translatedData[currentIndex]
+  const total = projectsStaticData.length
 
   /* Lock body scroll */
   useScrollLock(true)
@@ -258,11 +229,11 @@ function ProjectOverlay({ projectIndex, onClose }) {
   const openLightbox = (idx) => setLightboxIndex(idx)
   const closeLightbox = () => setLightboxIndex(null)
   const lightboxPrev = useCallback(() => {
-    setLightboxIndex((prev) => (prev - 1 + project.gallery.length) % project.gallery.length)
-  }, [project.gallery.length])
+    setLightboxIndex((prev) => (prev - 1 + staticProject.gallery.length) % staticProject.gallery.length)
+  }, [staticProject.gallery.length])
   const lightboxNext = useCallback(() => {
-    setLightboxIndex((prev) => (prev + 1) % project.gallery.length)
-  }, [project.gallery.length])
+    setLightboxIndex((prev) => (prev + 1) % staticProject.gallery.length)
+  }, [staticProject.gallery.length])
 
   return createPortal(
     <>
@@ -300,7 +271,7 @@ function ProjectOverlay({ projectIndex, onClose }) {
           whileHover={{ x: -4 }}
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polyline points="15 18 9 12 15 6" /></svg>
-          <span>Prev</span>
+          <span>{t('projects.prev')}</span>
         </motion.button>
         <motion.button
           className="overlay-nav overlay-nav-next"
@@ -311,7 +282,7 @@ function ProjectOverlay({ projectIndex, onClose }) {
           transition={{ delay: 0.4, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           whileHover={{ x: 4 }}
         >
-          <span>Next</span>
+          <span>{t('projects.next')}</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polyline points="9 6 15 12 9 18" /></svg>
         </motion.button>
 
@@ -330,11 +301,10 @@ function ProjectOverlay({ projectIndex, onClose }) {
             >
               {/* Hero image */}
               <motion.div className="overlay-hero" variants={heroSlideUp} initial="hidden" animate="visible">
-                <img src={project.image} alt={project.title} style={project.objectPosition ? { objectPosition: project.objectPosition } : undefined} />
+                <img src={staticProject.image} alt={translated.title} style={staticProject.objectPosition ? { objectPosition: staticProject.objectPosition } : undefined} />
                 <div className="overlay-hero-gradient" />
                 <div className="overlay-hero-text">
-                  <span className="overlay-category">{project.category}</span>
-                  <h2 className="overlay-title">{project.title}</h2>
+                  <h2 className="overlay-title">{translated.title}</h2>
                 </div>
               </motion.div>
 
@@ -343,17 +313,17 @@ function ProjectOverlay({ projectIndex, onClose }) {
                 {/* Project info grid */}
                 <motion.div className="overlay-meta" variants={bodyItem}>
                   <div className="overlay-meta-item">
-                    <span className="overlay-meta-label">Location</span>
-                    <span className="overlay-meta-value">{project.location}</span>
+                    <span className="overlay-meta-label">{t('projects.locationLabel')}</span>
+                    <span className="overlay-meta-value">{translated.location}</span>
                   </div>
                   <div className="overlay-meta-item">
-                    <span className="overlay-meta-label">Year</span>
-                    <span className="overlay-meta-value">{project.year}</span>
+                    <span className="overlay-meta-label">{t('projects.yearLabel')}</span>
+                    <span className="overlay-meta-value">{staticProject.year}</span>
                   </div>
-
+    
                   <div className="overlay-meta-item">
-                    <span className="overlay-meta-label">Services</span>
-                    <span className="overlay-meta-value">{project.services.join(' · ')}</span>
+                    <span className="overlay-meta-label">{t('projects.servicesLabel')}</span>
+                    <span className="overlay-meta-value">{translated.services.join(' · ')}</span>
                   </div>
                 </motion.div>
 
@@ -361,15 +331,15 @@ function ProjectOverlay({ projectIndex, onClose }) {
                 <motion.div className="overlay-gallery-section" variants={bodyItem}>
                   <div className="overlay-gallery-header">
                     <h3 className="overlay-gallery-title">
-                      Project Gallery
-                      {project.gallery && project.gallery.length > 0 && (
-                        <span className="gallery-count">({project.gallery.length} photos)</span>
+                      {t('projects.galleryTitle')}
+                      {staticProject.gallery && staticProject.gallery.length > 0 && (
+                        <span className="gallery-count">({staticProject.gallery.length} {t('projects.galleryPhotos')})</span>
                       )}
                     </h3>
                   </div>
                   <div className="overlay-gallery-divider" />
                   <div className="overlay-gallery-grid">
-                    {project.gallery && project.gallery.map((img, idx) => (
+                    {staticProject.gallery && staticProject.gallery.map((img, idx) => (
                       <motion.div
                         key={idx}
                         className="overlay-gallery-thumb"
@@ -380,13 +350,13 @@ function ProjectOverlay({ projectIndex, onClose }) {
                         whileHover={{ y: -6, transition: { duration: 0.3 } }}
                         onClick={() => openLightbox(idx)}
                       >
-                        <img
-                          src={img}
-                          alt={`${project.title} - gallery ${idx + 1}`}
-                          loading="lazy"
+                        <img 
+                          src={img} 
+                          alt={`${translated.title} - gallery ${idx + 1}`} 
+                          loading="lazy" 
                           onError={(e) => {
                             e.target.onerror = null;
-                            e.target.src = project.image; // fallback to main project image
+                            e.target.src = staticProject.image;
                           }}
                         />
                         <div className="gallery-thumb-overlay">
@@ -416,7 +386,7 @@ function ProjectOverlay({ projectIndex, onClose }) {
       <AnimatePresence>
         {lightboxIndex !== null && (
           <GalleryLightbox
-            images={project.gallery}
+            images={staticProject.gallery}
             activeIndex={lightboxIndex}
             onClose={closeLightbox}
             onPrev={lightboxPrev}
@@ -444,24 +414,26 @@ const cardVariants = {
 }
 
 function Projects() {
+  const { t } = useTranslation()
   const [selectedProject, setSelectedProject] = useState(null)
+  const translatedData = t('projects.data', { returnObjects: true })
 
   return (
     <>
       <section className="section" id="projects">
         <div className="container">
           <div className="section-header reveal">
-            <span className="section-label">Portfolio</span>
-            <h2 className="section-title">Featured Projects</h2>
+            <span className="section-label">{t('projects.label')}</span>
+            <h2 className="section-title">{t('projects.title')}</h2>
             <div className="section-divider"></div>
             <p className="section-subtitle">
-              A curated selection of our finest work, each project a unique expression of luxury and craftsmanship.
+              {t('projects.subtitle')}
             </p>
           </div>
         </div>
         <div className="container">
           <div className="projects-uniform-grid">
-            {projectsData.map((project, i) => (
+            {projectsStaticData.map((project, i) => (
               <motion.div
                 key={i}
                 className="project-card reveal"
@@ -471,13 +443,12 @@ function Projects() {
                 whileHover="hover"
                 onClick={() => setSelectedProject(i)}
               >
-                <img src={project.image} alt={project.title} loading="lazy" style={project.objectPosition ? { objectPosition: project.objectPosition } : undefined} />
+                <img src={project.image} alt={translatedData[i]?.title} loading="lazy" style={project.objectPosition ? { objectPosition: project.objectPosition } : undefined} />
                 <div className="project-card-overlay" />
                 <div className="project-info">
-                  <span>{project.category}</span>
-                  <h4>{project.title}</h4>
+                  <h4>{translatedData[i]?.title}</h4>
                   <div className="project-cta">
-                    <span>View Project</span>
+                    <span>{t('projects.viewProject')}</span>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
                     </svg>

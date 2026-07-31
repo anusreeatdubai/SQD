@@ -1,62 +1,27 @@
+import { useTranslation } from 'react-i18next'
+
 /* ═══════════════════════════════════════
    HISTORY COMPONENT
    ═══════════════════════════════════════ */
-
-const timelineData = [
-  {
-    era: 'The Beginning',
-    period: '1960s',
-    heading: 'Roots on Qeshm Island',
-    body: 'Three generations ago, the founding family began building large wooden cargo dhows on Qeshm Island in southern Iran. These traditional vessels were vital to regional maritime trade. Constructing them demanded engineering knowledge, precision craftsmanship, and an uncompromising commitment to quality.',
-  },
-  {
-    era: 'Expansion',
-    period: '1970s – 1980s',
-    heading: 'Doors, Windows & Woodworking',
-    body: 'Alongside dhow building, the family specialised in manufacturing wooden doors and windows. As the industry evolved, the next generation expanded the business while preserving the same values of quality, reliability, and craftsmanship that had defined the family for decades.',
-  },
-  {
-    era: 'Transformation',
-    period: '1990s – 2000s',
-    heading: 'From Workshop to Modern Manufacturer',
-    body: 'What began as a traditional woodworking workshop gradually evolved into a modern manufacturing business, specialising in custom joinery, kitchens, wardrobes, interior fit-out solutions, UPVC and aluminium doors and windows, and a wide range of architectural wood products.',
-  },
-  {
-    era: 'UAE Chapter',
-    period: '2010s – Present',
-    heading: 'SQD Established in Dubai',
-    body: 'Today this legacy continues in the United Arab Emirates under the SQD brand. Headquartered in Dubai with our manufacturing facility in Sharjah Airport International Free Zone (SAIF Zone), we are equipped to deliver large-scale joinery solutions across the UAE and the wider region.',
-  },
-  {
-    era: 'The Future',
-    period: 'Now & Beyond',
-    heading: 'SQD App: The Next Generation',
-    body: 'We believe the future of the joinery industry will be driven by technology, automation, and artificial intelligence. That is why we are developing SQD App, an intelligent platform designed to unify sales, design, estimating, manufacturing, project management, and AI into one integrated ecosystem.',
-  },
-]
-
-const stats = [
-  { value: '60+', label: 'Years of Experience' },
-  { value: '3', label: 'Generations of Craftsmanship' },
-  { value: 'DUBAI', label: 'Headquartered in Dubai' },
-  { value: 'SAIF ZONE', label: 'Manufacturing in Sharjah' },
-]
-
 function History() {
+  const { t } = useTranslation()
+
+  const timelineData = t('history.timeline', { returnObjects: true })
+  const stats = t('history.stats', { returnObjects: true })
+
   return (
     <section className="history section" id="history">
       <div className="container">
 
         {/* ── Section Header ── */}
         <div className="section-header reveal-up">
-          <span className="section-label">Our Story</span>
+          <span className="section-label">{t('history.label')}</span>
           <h2 className="section-title history-title">
-            More Than 60 Years in the Making
+            {t('history.title')}
           </h2>
           <div className="section-divider history-divider"></div>
           <p className="section-subtitle history-subtitle">
-            Every enduring company has a story. Ours began more than six decades ago, built on
-            the craftsmanship, experience, and dedication of three generations of one family.
+            {t('history.subtitle')}
           </p>
         </div>
 
@@ -100,9 +65,8 @@ function History() {
         <div className="history-closing reveal-up">
           <div className="history-closing-line"></div>
           <blockquote className="history-quote">
-            More than 60 years of experience. Three generations of craftsmanship.
-            The capability to deliver large-scale projects. A clear vision for the future.
-            <cite>That is SQD.</cite>
+            {t('history.quote')}
+            <cite>{t('history.quoteCite')}</cite>
           </blockquote>
           <div className="history-closing-line"></div>
         </div>

@@ -1,7 +1,11 @@
+import { useTranslation } from 'react-i18next'
+
 /* ═══════════════════════════════════════
    HERO COMPONENT
    ═══════════════════════════════════════ */
 function Hero() {
+  const { t } = useTranslation()
+
   return (
     <section className="hero" id="home">
       <div className="hero-bg">
@@ -20,26 +24,20 @@ function Hero() {
           className="hero-brand-img"
         />
         <h1>
-          Crafting Bespoke Interiors for Modern Living
+          {t('hero.title')}
         </h1>
         <p className="hero-tagline">
-          Luxury Kitchens &nbsp;•&nbsp; Custom Joinery &nbsp;•&nbsp; Wardrobes &nbsp;•&nbsp; Interior Fit-Out
+          {t('hero.tagline')}
         </p>
         <div className="hero-buttons">
           <a href="#projects" className="btn-primary" onClick={(e) => { e.preventDefault(); document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }) }}>
-            Explore Projects
+            {t('hero.exploreProjects')}
           </a>
           <a href="#cta" className="btn-secondary" onClick={(e) => { e.preventDefault(); document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' }) }}>
-            Request Consultation
+            {t('hero.requestConsultation')}
           </a>
         </div>
       </div>
-      {/* <div className="scroll-indicator">
-        <div className="scroll-mouse">
-          <div className="scroll-dot"></div>
-        </div>
-        <span>Scroll</span>
-      </div> */}
     </section>
   )
 }
