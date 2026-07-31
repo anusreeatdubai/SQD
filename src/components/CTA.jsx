@@ -25,7 +25,7 @@ function CTA() {
 
     setStatus('sending')
 
-    const apiKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
+    const apiKey = (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '').trim()
 
     // If Web3Forms API key is configured and not default placeholder, submit via Web3Forms API
     if (apiKey && apiKey !== 'your_web3forms_access_key_here') {
