@@ -27,69 +27,66 @@ function CTA() {
 
     const apiKey = (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '').trim()
 
-    // If Web3Forms API key is configured and not default placeholder, submit via Web3Forms API
-    if (apiKey && apiKey !== 'your_web3forms_access_key_here') {
-      try {
-        const response = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json'
-          },
-          body: JSON.stringify({
-            access_key: apiKey,
-            name,
-            email,
-            phone,
-            service: service || 'N/A',
-            location: location || 'N/A',
-            budget: budget || 'N/A',
-            message: message || 'N/A',
-            subject: `New Quote Request: ${service || 'General Enquiry'} | ${name}`,
-            from_name: 'SQD Website Quote Form'
-          })
-        })
+    // 1. Console Log: Access Key Check
+    console.log('[Web3Forms Debug] Access Key Check:', {
+      exists: Boolean(apiKey),
+      isPlaceholder: apiKey === 'your_web3forms_access_key_here',
+      environment: import.meta.env.MODE || 'unknown'
+    })
 
-        const result = await response.json()
-        if (result.success) {
-          setStatus('sent')
-          form.reset()
-          setTimeout(() => {
-            setStatus('idle')
-          }, 5000)
-        } else {
-          console.error('Web3Forms Error:', result)
-          setStatus('error')
-          setTimeout(() => {
-            setStatus('idle')
-          }, 5000)
-        }
-      } catch (err) {
-        console.error('Submission Error:', err)
+    if (!apiKey || apiKey === 'your_web3forms_access_key_here') {
+      console.error('[Web3Forms Error] Missing or invalid VITE_WEB3FORMS_ACCESS_KEY environment variable. Set VITE_WEB3FORMS_ACCESS_KEY in Vercel project settings.')
+    }
+
+    // Prepare payload object
+    const payload = {
+      access_key: apiKey,
+      name,
+      email,
+      phone,
+      service: service || 'N/A',
+      location: location || 'N/A',
+      budget: budget || 'N/A',
+      message: message || 'N/A',
+      subject: `New Quote Request: ${service || 'General Enquiry'} | ${name}`,
+      from_name: 'SQD Website Quote Form'
+    }
+
+    // 2. Console Log: Request Payload
+    console.log('[Web3Forms Debug] Sending Payload to https://api.web3forms.com/submit:', payload)
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+
+      const result = await response.json()
+
+      // 3. Console Log: Web3Forms Response
+      console.log('[Web3Forms Debug] API Response:', result)
+
+      if (result.success) {
+        setStatus('sent')
+        form.reset()
+        setTimeout(() => {
+          setStatus('idle')
+        }, 5000)
+      } else {
+        console.error('[Web3Forms Error] API returned failure:', result)
         setStatus('error')
         setTimeout(() => {
           setStatus('idle')
         }, 5000)
       }
-    } else {
-      // Fallback: mailto client
-      const subject = encodeURIComponent(`Quote Request: ${service || 'General Enquiry'} | ${name}`)
-      const body = encodeURIComponent(
-`New Quote Request from SQD Website
-
-Name:     ${name}
-Email:    ${email}
-Phone:    ${phone}
-Service:  ${service || 'N/A'}
-Location: ${location || 'N/A'}
-Budget:   ${budget || 'N/A'}
-
-Message:
-${message || 'N/A'}`
-      )
-      window.location.href = `mailto:info@sqd.ae?subject=${subject}&body=${body}`
-      setStatus('sent')
-      form.reset()
+    } catch (err) {
+      // 4. Console Log: Fetch Error
+      console.error('[Web3Forms Error] Network or Fetch Exception:', err)
+      setStatus('error')
       setTimeout(() => {
         setStatus('idle')
       }, 5000)
