@@ -27,7 +27,7 @@ function CTA() {
 
     const apiKey = (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '').trim()
 
-    console.log("Access Key:", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY);
+    console.log("Access Key:", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY)
 
     // 1. Console Log: Access Key Check
     console.log('[Web3Forms Debug] Access Key Check:', {
