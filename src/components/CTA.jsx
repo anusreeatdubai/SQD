@@ -25,20 +25,9 @@ function CTA() {
 
     setStatus('sending')
 
-    const apiKey = (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '').trim()
+const WEB3FORMS_ACCESS_KEY = 'c6dc97b3-94eb-468c-b3d9-be98a4721b22'
 
-    console.log("Access Key:", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY)
-
-    // 1. Console Log: Access Key Check
-    console.log('[Web3Forms Debug] Access Key Check:', {
-      exists: Boolean(apiKey),
-      isPlaceholder: apiKey === 'your_web3forms_access_key_here',
-      environment: import.meta.env.MODE || 'unknown'
-    })
-
-    if (!apiKey || apiKey === 'your_web3forms_access_key_here') {
-      console.error('[Web3Forms Error] Missing or invalid VITE_WEB3FORMS_ACCESS_KEY environment variable. Set VITE_WEB3FORMS_ACCESS_KEY in Vercel project settings.')
-    }
+    const apiKey = WEB3FORMS_ACCESS_KEY
 
     // Prepare payload object
     const payload = {
