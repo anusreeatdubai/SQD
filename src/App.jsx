@@ -3,6 +3,7 @@ import { useReveal } from './hooks/useReveal'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
+import History from './components/History'
 import Services from './components/Services'
 import Projects from './components/Projects'
 import WhySQD from './components/WhySQD'
@@ -24,6 +25,7 @@ function App() {
       <Navbar />
       <Hero />
       <About />
+      <History />
       <Services />
       <Projects />
       <WhySQD />

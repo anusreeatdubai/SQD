@@ -45,7 +45,7 @@ function CTA() {
             location: location || 'N/A',
             budget: budget || 'N/A',
             message: message || 'N/A',
-            subject: `New Quote Request — ${service || 'General Enquiry'} | ${name}`,
+            subject: `New Quote Request: ${service || 'General Enquiry'} | ${name}`,
             from_name: 'SQD Website Quote Form'
           })
         })
@@ -73,7 +73,7 @@ function CTA() {
       }
     } else {
       // Fallback: mailto client
-      const subject = encodeURIComponent(`Quote Request — ${service || 'General Enquiry'} | ${name}`)
+      const subject = encodeURIComponent(`Quote Request: ${service || 'General Enquiry'} | ${name}`)
       const body = encodeURIComponent(
 `New Quote Request from SQD Website
 
@@ -183,7 +183,7 @@ ${message || 'N/A'}`
                 Request Sent
               </>
             ) : status === 'error' ? (
-              <>Failed to Send — Try Again</>
+              <>Failed to Send. Try Again</>
             ) : (
               <>
                 Send Quote Request

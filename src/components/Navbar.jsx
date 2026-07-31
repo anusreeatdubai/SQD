@@ -31,6 +31,7 @@ function Navbar() {
       <div className={`navbar-links ${mobileOpen ? 'mobile-open' : ''}`}>
         <a href="#home" onClick={(e) => handleNavClick(e, 'home')}>Home</a>
         <a href="#about" onClick={(e) => handleNavClick(e, 'about')}>About</a>
+        <a href="#history" onClick={(e) => handleNavClick(e, 'history')}>History</a>
         <a href="#services" onClick={(e) => handleNavClick(e, 'services')}>Services</a>
         <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')}>Projects</a>
         <a href="#factory" onClick={(e) => handleNavClick(e, 'factory')}>Factory</a>

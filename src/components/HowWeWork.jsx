@@ -21,7 +21,7 @@ function HowWeWork() {
           <h2 className="section-title">How We Work</h2>
           <div className="section-divider"></div>
           <p className="section-subtitle">
-            A refined process ensuring exceptional results — from initial consultation to final installation.
+            A refined process ensuring exceptional results, from initial consultation to final installation.
           </p>
         </div>
         <div className="timeline">

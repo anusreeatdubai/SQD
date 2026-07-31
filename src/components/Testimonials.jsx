@@ -5,7 +5,7 @@ import { StarIcon } from './Icons'
    ═══════════════════════════════════════ */
 const testimonialsData = [
   {
-    text: '"SQD transformed our vision into reality. The attention to detail in our kitchen is beyond anything we imagined. Every cabinet, every finish — absolute perfection."',
+    text: '"SQD transformed our vision into reality. The attention to detail in our kitchen is beyond anything we imagined. Every cabinet, every finish, absolute perfection."',
     author: 'Sarah M.',
     role: 'Homeowner, Dubai'
   },

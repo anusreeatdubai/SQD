@@ -13,18 +13,23 @@ const projectsData = [
     description:
       'Premium commercial interior fit-out featuring bespoke joinery, modern finishes, and precision craftsmanship throughout the development.',
     location: 'Qeshm, Iran',
-    year: '2023',
+    year: '2016',
     services: [
-      'Commercial Fit-Out',
-      'Bespoke Lobby & Elevator Joinery',
-      'Acoustic Wall Cladding',
-      'Custom Reception Desks',
-      'Feature Ceiling Solutions'
+      'Bespoke Kitchen Cabinetry',
+      'Custom Wardrobes & Closets',
+      'TV Feature Wall Joinery',
+      'Custom Display & Storage Units',
+      'Under-Stair Storage Solutions'
     ],
     gallery: [
-      '/images/projects/QTwinTower.png',
-      '/images/projects/QTwinTower-2.png',
-      '/images/projects/QTwinTower-3.png',
+      '/images/projects/QTwinTower/tt1.png',
+      '/images/projects/QTwinTower/tt2.png',
+      '/images/projects/QTwinTower/tt3.png',
+      '/images/projects/QTwinTower/tt4.png',
+      '/images/projects/QTwinTower/tt5.png',
+      '/images/projects/QTwinTower/tt6.png',
+      '/images/projects/QTwinTower/tt7.png',
+      '/images/projects/QTwinTower/tt8.png',
     ],
   },
   {
@@ -34,7 +39,7 @@ const projectsData = [
     description:
       'A premium commercial development featuring custom interior fit-out, bespoke joinery, and high-quality architectural finishes.',
     location: 'Qeshm, Iran',
-    year: '2024',
+    year: '2018',
     services: [
       'Luxury Interior Fit-Out',
       'Architectural Woodwork',
@@ -43,9 +48,14 @@ const projectsData = [
       'Custom Display Cabinetry'
     ],
     gallery: [
-      '/images/projects/Daryoush.png',
-      '/images/projects/Daryoush-2.png',
-      '/images/projects/Daryoush-3.png',
+      '/images/projects/Daryoush/d1.png',
+      '/images/projects/Daryoush/d2.png',
+      '/images/projects/Daryoush/d3.png',
+      '/images/projects/Daryoush/d4.png',
+      '/images/projects/Daryoush/d5.png',
+      '/images/projects/Daryoush/d6.png',
+      '/images/projects/Daryoush/d7.png',
+      '/images/projects/Daryoush/d8.png',
     ],
   },
   {
@@ -54,7 +64,7 @@ const projectsData = [
     description:
       'A premium mixed-use development featuring custom interior fit-out, bespoke joinery, and high-quality architectural finishes.',
     location: 'Qeshm, Iran',
-    year: '2024',
+    year: '2026',
     services: [
       'Turnkey Commercial Fit-Out',
       'Executive Lounge Joinery',
@@ -63,9 +73,14 @@ const projectsData = [
       'Decorative Ceiling Baffles'
     ],
     gallery: [
-      '/images/projects/TopIsland.png',
-      '/images/projects/TopIsland-2.png',
-      '/images/projects/TopIsland-3.png',
+      '/images/projects/TopIsland/qt1.png',
+      '/images/projects/TopIsland/qt2.png',
+      '/images/projects/TopIsland/qt3.png',
+      '/images/projects/TopIsland/qt4.png',
+      '/images/projects/TopIsland/qt5.png',
+      '/images/projects/TopIsland/qt6.png',
+      '/images/projects/TopIsland/qt7.png',
+      '/images/projects/TopIsland/qt8.png',
     ],
   },
 ]
@@ -335,7 +350,7 @@ function ProjectOverlay({ projectIndex, onClose }) {
                     <span className="overlay-meta-label">Year</span>
                     <span className="overlay-meta-value">{project.year}</span>
                   </div>
-    
+
                   <div className="overlay-meta-item">
                     <span className="overlay-meta-label">Services</span>
                     <span className="overlay-meta-value">{project.services.join(' · ')}</span>
@@ -344,10 +359,17 @@ function ProjectOverlay({ projectIndex, onClose }) {
 
                 {/* Gallery */}
                 <motion.div className="overlay-gallery-section" variants={bodyItem}>
-                  <h3 className="overlay-gallery-title">Project Gallery</h3>
+                  <div className="overlay-gallery-header">
+                    <h3 className="overlay-gallery-title">
+                      Project Gallery
+                      {project.gallery && project.gallery.length > 0 && (
+                        <span className="gallery-count">({project.gallery.length} photos)</span>
+                      )}
+                    </h3>
+                  </div>
                   <div className="overlay-gallery-divider" />
                   <div className="overlay-gallery-grid">
-                    {project.gallery.map((img, idx) => (
+                    {project.gallery && project.gallery.map((img, idx) => (
                       <motion.div
                         key={idx}
                         className="overlay-gallery-thumb"
@@ -358,7 +380,15 @@ function ProjectOverlay({ projectIndex, onClose }) {
                         whileHover={{ y: -6, transition: { duration: 0.3 } }}
                         onClick={() => openLightbox(idx)}
                       >
-                        <img src={img} alt={`${project.title} — gallery ${idx + 1}`} loading="lazy" />
+                        <img
+                          src={img}
+                          alt={`${project.title} - gallery ${idx + 1}`}
+                          loading="lazy"
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = project.image; // fallback to main project image
+                          }}
+                        />
                         <div className="gallery-thumb-overlay">
                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                             <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -425,7 +455,7 @@ function Projects() {
             <h2 className="section-title">Featured Projects</h2>
             <div className="section-divider"></div>
             <p className="section-subtitle">
-              A curated selection of our finest work — each project a unique expression of luxury and craftsmanship.
+              A curated selection of our finest work, each project a unique expression of luxury and craftsmanship.
             </p>
           </div>
         </div>
