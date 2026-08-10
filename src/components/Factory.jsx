@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 const factoryImages = [
   '/images/factory/cncnesting.png',
   '/images/factory/panelsaw.png',
-  '/images/factory/workshoponly.jpeg',
+  '/images/factory/workshoponly.png',
   '/images/factory/edgebander.png',
   '/images/factory/cut.png',
   '/images/factory/cabinet.png',
