@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sqdinteriors.com/sitemap.xml
+Sitemap: https://sqd.ae/sitemap.xml
