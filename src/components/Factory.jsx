@@ -7,7 +7,7 @@ const factoryImages = [
   '/images/factory/cncnesting.png',
   '/images/factory/panelsaw.png',
   '/images/factory/workshoponly.png',
-  '/images/factory/edgebander.png',
+  '/images/factory/edgebander.JPG',
   '/images/factory/cut.png',
   '/images/factory/cabinet.png',
 ]
